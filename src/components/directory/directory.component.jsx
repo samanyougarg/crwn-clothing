@@ -47,11 +47,18 @@ class Directory extends React.Component {
 
   render() {
     return (
+      // <div className="directory-menu">
+      //   {this.state.sections.map((
+      //     { title, imageUrl, id, size } // instead of using section parameter we can destructure all values from our section
+      //   ) => (
+      //     <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+      //   ))}
+      // </div>
+
+      // better way of passing the arguments
       <div className="directory-menu">
-        {this.state.sections.map((
-          { title, imageUrl, id, size } // instead of using section parameter we can destructure all values from our section
-        ) => (
-          <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
+        {this.state.sections.map(({ id, ...otherSectionProps }) => (
+          <MenuItem key={id} {...otherSectionProps} />
         ))}
       </div>
     );
